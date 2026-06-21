@@ -134,26 +134,51 @@ L --> M[Collision Distance Estimation]
 
 📈 **7. Results**
 
+The image below shows the stereo image pair (left and right views) used as input for depth estimation.
+
 <table>
   <tr>
     <td align="center">
-      <img src="Raw Image.png" width="100%"/>
-      <p><b>Input Image for Perception</b></p>
+      <img src="Stereo_Left_Right.png" width="100%"/>
+      <p><b>Stereo Image Pair (Left and Right Views)</b></p>
+    </td>
+  </tr>
+</table>
+
+The visualizations below shows the disparity map, depth map, obstacle localization heatmap, and the final estimated distance to the obstacle.
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="Disparity Map.png" width="100%"/>
+      <p><b>Disparity Map</b></p>
     </td>
     <td align="center">
-      <img src="Resources/Road_Plane.png" width="100%"/>
-      <p><b>Identified Drivable Region</b></p>
+      <img src="Depth Map.png" width="90%"/>
+      <p><b>Depth Map</b></p>
     </td>
   </tr>
 
   <tr>
     <td align="center">
-      <img src="Resources/Disparity_Map.png" width="100%"/>
-      <p><b>Disparity Map</b></p>
+      <img src="Cross Corelation Heatmap.png" width="100%"/>
+      <p><b>Cross Corelation Heatmap</b></p>
     </td>
     <td align="center">
-      <img src="Resources/Depth_Map.png" width="100%"/>
-      <p><b>Depth Map</b></p>
+      <img src="Distance_to_Impact.png" width="95%"/>
+      <p><b>Distance to Obstacle (29.091 m) </b></p>
     </td>
   </tr>
 </table>
+
+---
+
+⚠️ **10. Data Note**
+
+This project was developed as part of a self-driving car perception assignment using simulated data from the CARLA environment. All inputs used in this pipeline (semantic segmentation, depth maps, and 2D object detections) are pre-generated and provided as part of the dataset. 
+
+The focus of this work is on perception logic, geometric reasoning, and classical computer vision techniques for scene understanding.
+
+---
+
+
