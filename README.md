@@ -66,6 +66,15 @@ Stereo cameras capture the same scene from two slightly different viewpoints, si
 
 In this project, stereo image pairs are used to compute a **disparity map**, which forms the basis for depth estimation.
 
+<table>
+  <tr>
+    <td align="center">
+      <b>Typical Stereo Setup</b><br>
+      <img src="StereoCamera.webp" width="400"/>
+    </td>
+  </tr>
+</table>
+
 
 *(B) Disparity Maps* <br>
 
@@ -88,5 +97,63 @@ In this project, OpenCV’s `matchTemplate` function is used to compute a simila
 
 ---
 
+🧠 **6. Simplified Pipeline Setup**
 
+```mermaid
+flowchart TD
 
+A[Left Stereo Image] --> C[Grayscale Conversion]
+B[Right Stereo Image] --> C
+
+C --> D[Stereo Matching]
+D --> E[Disparity Map]
+
+E --> F[Depth Estimation]
+F --> G[Depth Map]
+
+A --> H[Obstacle Detection]
+I[Obstacle Image] --> H
+H --> J[Obstacle Location]
+
+G --> K[Region of Interest Extraction]
+J --> K
+
+K --> L[Depth Analysis Within Obstacle Region]
+L --> M[Collision Distance Estimation]
+```
+
+- **Stereo/ Obstacle Images**: Stereo images consist of two views of the same scene captured from slightly different positions, while the obstacle image represents a cropped region of the object to be detected within the scene.
+- **Grayscale Conversion**: Reduces a color image to a single intensity channel, simplifying the data for more efficient and reliable stereo matching.
+- **Stereo Matching**: Process of finding corresponding points between left and right images of the same scene to estimate pixel-wise depth differences.
+- **Depth Estimation**: Converts disparity information from stereo images into real-world distance values using camera geometry and calibration parameters.
+- **Object Detection and Location**: Identifies a target object in the scene and determines its position within the image for further analysis.
+- **Depth Analysis Within Obstacle Region**: Extracts depth values from the area of the detected object to estimate how far different parts of the obstacle are from the camera.
+- **Collision Distance Estimation**: Determine the minimum distance to an obstacle by selecting the closest depth value within the detected object region.
+
+---
+
+📈 **7. Results**
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="Raw Image.png" width="100%"/>
+      <p><b>Input Image for Perception</b></p>
+    </td>
+    <td align="center">
+      <img src="Resources/Road_Plane.png" width="100%"/>
+      <p><b>Identified Drivable Region</b></p>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <img src="Resources/Disparity_Map.png" width="100%"/>
+      <p><b>Disparity Map</b></p>
+    </td>
+    <td align="center">
+      <img src="Resources/Depth_Map.png" width="100%"/>
+      <p><b>Depth Map</b></p>
+    </td>
+  </tr>
+</table>
