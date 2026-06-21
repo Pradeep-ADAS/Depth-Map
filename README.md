@@ -14,7 +14,7 @@ Object localization is then used to identify obstacles, and depth information is
   <tr>
     <td align="center">
       <b></b><br>
-      <img src="Intro_GIF.gif" width="700"/>
+      <img src="Intro_GIF.gif" width="500"/>
     </td>
   </tr>
 </table>
